@@ -18,3 +18,10 @@ def bottles_of_beer(num)
     bottles_of_beer(num - 1)
   end
 end
+
+def fibonacci(num)
+  return 0 if num == 0
+  return 1 if num == 1
+
+  fibonacci(num - 1) + fibonacci(num - 2)
+end
