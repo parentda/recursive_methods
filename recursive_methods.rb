@@ -25,3 +25,10 @@ def fibonacci(num)
 
   fibonacci(num - 1) + fibonacci(num - 2)
 end
+
+def array_flatten(array, output = [])
+  array.each do |item|
+    item.is_a?(Array) ? array_flatten(item, output) : output << item
+  end
+  output
+end
