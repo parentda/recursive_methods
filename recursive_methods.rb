@@ -36,7 +36,13 @@ def fibs(num)
   fib_nums
 end
 
-def fibs_rec(num); end
+def fibs_rec(num, fib_nums = [0, 1])
+  if num < 2
+    fib_nums.slice(..num)
+  else
+    fib_nums << fibs_rec(num - 1, fib_nums).slice(-2..).sum
+  end
+end
 
 def array_flatten(array, output = [])
   array.each do |item|
