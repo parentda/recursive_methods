@@ -57,3 +57,30 @@ def int_to_roman(int, result = '', keys = ROMAN_MAPPING.keys)
   result << ROMAN_MAPPING[key] * quotient
   int_to_roman(modulus, result, keys)
 end
+
+ROMAN_MAPPING2 = {
+  'M' => 1000,
+  'CM' => 900,
+  'D' => 500,
+  'CD' => 400,
+  'C' => 100,
+  'XC' => 90,
+  'L' => 50,
+  'XL' => 40,
+  'X' => 10,
+  'IX' => 9,
+  'V' => 5,
+  'IV' => 4,
+  'I' => 1
+}
+
+def roman_to_int(roman, result = 0)
+  return result if roman.empty?
+
+  ROMAN_MAPPING2.each_key do |numeral|
+    if roman.start_with?(numeral)
+      result += ROMAN_MAPPING2[numeral]
+      return roman_to_int(roman[numeral.length..], result)
+    end
+  end
+end
