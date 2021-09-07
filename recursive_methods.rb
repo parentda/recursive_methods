@@ -26,6 +26,18 @@ def fibonacci(num)
   fibonacci(num - 1) + fibonacci(num - 2)
 end
 
+def fibs(num)
+  fib_nums = [0, 1]
+  if num < 2
+    return fib_nums.slice(..num)
+  else
+    (num - 1).times { fib_nums << fib_nums[-1] + fib_nums[-2] }
+  end
+  fib_nums
+end
+
+def fibs_rec(num); end
+
 def array_flatten(array, output = [])
   array.each do |item|
     item.is_a?(Array) ? array_flatten(item, output) : output << item
