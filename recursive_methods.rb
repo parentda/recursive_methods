@@ -36,11 +36,12 @@ def fibs(num)
   fib_nums
 end
 
-def fibs_rec(num, fib_nums = [0, 1])
+def fibs_rec(num)
   if num < 2
-    fib_nums.slice(..num)
+    [0, 1].slice(..num)
   else
-    fib_nums << fibs_rec(num - 1, fib_nums).slice(-2..).sum
+    fib_nums = fibs_rec(num - 1)
+    fib_nums << fib_nums[-1] + fib_nums[-2]
   end
 end
 
