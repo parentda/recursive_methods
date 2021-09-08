@@ -103,3 +103,27 @@ def roman_to_int(roman, result = 0)
     end
   end
 end
+
+def merge_sort(array)
+  return array if array.length <= 1
+
+  left, right = array.each_slice((array.length / 2.0).round).to_a
+
+  left = merge_sort(left) if left.length > 1
+  right = merge_sort(right) if right.length > 1
+
+  merge(left, right)
+end
+
+def merge(left, right)
+  output = []
+
+  while !left.empty? && !right.empty?
+    left.first <= right.first ? output << left.shift : output << right.shift
+  end
+
+  output << left.shift while !left.empty?
+  output << right.shift while !right.empty?
+
+  output
+end
